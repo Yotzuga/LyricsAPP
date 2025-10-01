@@ -30,3 +30,7 @@ python main.py
 
 Notas
 - Asegúrate de tener VLC instalado y que python-vlc pueda encontrar libvlc.
+
+## Licencia
+
+Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo <a>LICENSE</a> para más detalles.
