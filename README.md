@@ -11,23 +11,6 @@ Características principales
 
 Estructura
 - `main.py` - punto de entrada y wiring de controladores.
-- `controllers/` - controladores UI y servicios (LyricsController, PlayerController, TimesController, etc.).
-- `player/` - wrapper VLC.
-- `threads/` - hilo de actualización de tiempo.
-
-# Lyrics Sync (PyQt6)
-
-Aplicación de escritorio para sincronizar letras con audio.
-
-Características principales
-- Cargar canciones y mostrar letra en tabla con timestamps.
-- Reproducir audio con libVLC (python-vlc).
-- Asignar el tiempo actual del reproductor a marcadores vacíos (AsignarRowTime).
-- Eliminar el último marcador asignado (BackSync).
-- Doble clic en línea para hacer seek sin detener la reproducción.
-
-Estructura
-- `main.py` - punto de entrada y wiring de controladores.
 - `controllers/` - controladores UI y servicios.
 - `player/` - wrapper VLC y clase `Song`.
 - `threads/` - hilo de actualización de tiempo.
@@ -48,7 +31,7 @@ Versión de Python recomendada
 Comprobar versión de Python (PowerShell / terminal):
 ```powershell
 python --version
-# o dentro de Python
+```
 python -c "import sys; print(sys.version)"
 ```
 
@@ -70,10 +53,8 @@ python main.py
 Cómo crear un ejecutable con PyInstaller (recomendado empezar con `--onedir`)
 
 ```powershell
-# compilar y añadir el archivo UI para que uic.loadUi lo encuentre en runtime
 pyinstaller --noconfirm --clean --onedir --windowed --name LyricsAPP --add-data "gui\LyricsGUI.ui;gui" main.py
 
-# si quieres ver errores en consola mientras depuras, usa --console en lugar de --windowed
 pyinstaller --noconfirm --clean --onedir --console --name LyricsAPP --add-data "gui\LyricsGUI.ui;gui" main.py
 ```
 
