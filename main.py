@@ -1,0 +1,39 @@
+from PyQt6 import QtWidgets, uic
+import sys
+import os
+from controllers.BibliotecaController import BibliotecaController 
+from controllers.LyricsController import LyricsController        
+from controllers.ImportContoller import ImportContoller         
+from controllers.PlayerController import PlayerController
+from controllers.TimesController import TimesController
+
+class MyWindow(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(MyWindow, self).__init__()
+        ui_file = os.path.join(os.path.dirname(__file__), "gui", "LyricsGUI.ui")
+        self.ui = uic.loadUi(ui_file, self)  # type: ignore
+
+       
+        self.ui.tableWidgetLyrics.setColumnWidth(0, 80)  # type: ignore # Columna de tiempos
+        self.ui.tableWidgetLyrics.setColumnWidth(1, 528)  # type: ignore # Columna de letras
+
+        self.biblioteca_controller = BibliotecaController(self.ui, parent=self)
+   
+        self.player_controller = PlayerController(self.ui, self.biblioteca_controller)
+    
+        self.lyrics_controller = LyricsController(self.ui, self.biblioteca_controller, player_controller=self.player_controller)
+        
+        self.times_controller = TimesController(self.ui, player_controller=self.player_controller)
+        
+        try:
+            setattr(self.player_controller, 'times_controller', self.times_controller)
+        except Exception:
+            pass
+         
+        self.import_controller = ImportContoller(self.ui, parent=self)
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = MyWindow()
+    window.show()
+    sys.exit(app.exec())
