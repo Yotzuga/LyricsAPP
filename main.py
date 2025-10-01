@@ -13,9 +13,9 @@ class MyWindow(QtWidgets.QMainWindow):
         ui_file = os.path.join(os.path.dirname(__file__), "gui", "LyricsGUI.ui")
         self.ui = uic.loadUi(ui_file, self)  # type: ignore
 
-       
-        self.ui.tableWidgetLyrics.setColumnWidth(0, 80)  # type: ignore # Columna de tiempos
-        self.ui.tableWidgetLyrics.setColumnWidth(1, 528)  # type: ignore # Columna de letras
+       # Fija los anchos que quieres
+        self.ui.tableWidgetLyrics.setColumnWidth(0, 85)    # type: ignore
+        self.ui.tableWidgetLyrics.setColumnWidth(1, 528)    # type: ignore 
 
         self.biblioteca_controller = BibliotecaController(self.ui, parent=self)
    

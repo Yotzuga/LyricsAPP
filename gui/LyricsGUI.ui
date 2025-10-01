@@ -22,6 +22,12 @@
     <height>768</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>937</width>
+    <height>768</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>LyricsAPP</string>
   </property>
@@ -34,6 +40,11 @@
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="font">
+    <font>
+     <bold>false</bold>
+    </font>
+   </property>
    <widget class="QFrame" name="framePLayer">
     <property name="geometry">
      <rect>
@@ -44,8 +55,12 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #222;
-border-radius: 10px;</string>
+     <string notr="true">/* framePlayer */
+QFrame {
+  background: #1d2026;
+  border: 1px solid #2b2f39;
+  border-radius: 10px;
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -58,19 +73,22 @@ border-radius: 10px;</string>
       <rect>
        <x>10</x>
        <y>85</y>
-       <width>91</width>
-       <height>21</height>
+       <width>81</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>12</pointsize>
-       <fontweight>DemiBold</fontweight>
+       <fontweight>Medium</fontweight>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels descriptivos (Album/Artista/Título/Duración) */
+QLabel {
+  color: #b6bcc8;
+  font-weight: 500;
+}</string>
      </property>
      <property name="text">
       <string>Duracion:</string>
@@ -82,18 +100,21 @@ font-weight: 600;</string>
        <x>10</x>
        <y>35</y>
        <width>61</width>
-       <height>21</height>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>12</pointsize>
-       <fontweight>DemiBold</fontweight>
+       <fontweight>Medium</fontweight>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels descriptivos (Album/Artista/Título/Duración) */
+QLabel {
+  color: #b6bcc8;
+  font-weight: 500;
+}</string>
      </property>
      <property name="text">
       <string>Artista:</string>
@@ -105,18 +126,21 @@ font-weight: 600;</string>
        <x>10</x>
        <y>60</y>
        <width>61</width>
-       <height>21</height>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>12</pointsize>
-       <fontweight>DemiBold</fontweight>
+       <fontweight>Medium</fontweight>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels descriptivos (Album/Artista/Título/Duración) */
+QLabel {
+  color: #b6bcc8;
+  font-weight: 500;
+}</string>
      </property>
      <property name="text">
       <string>Album:</string>
@@ -128,18 +152,21 @@ font-weight: 600;</string>
        <x>10</x>
        <y>10</y>
        <width>61</width>
-       <height>21</height>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
       <font>
        <pointsize>12</pointsize>
-       <fontweight>DemiBold</fontweight>
+       <fontweight>Medium</fontweight>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels descriptivos (Album/Artista/Título/Duración) */
+QLabel {
+  color: #b6bcc8;
+  font-weight: 500;
+}</string>
      </property>
      <property name="text">
       <string>Titulo:</string>
@@ -148,10 +175,10 @@ font-weight: 600;</string>
     <widget class="QLabel" name="labelTituloSet">
      <property name="geometry">
       <rect>
-       <x>64</x>
+       <x>78</x>
        <y>10</y>
-       <width>581</width>
-       <height>21</height>
+       <width>541</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
@@ -163,8 +190,11 @@ font-weight: 600;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels de valor (...Set) */
+QLabel {
+  color: #e6e6e9;
+  font-weight: 600;
+}</string>
      </property>
      <property name="text">
       <string>--</string>
@@ -179,10 +209,10 @@ font-weight: 600;</string>
     <widget class="QLabel" name="labelArtistaSet">
      <property name="geometry">
       <rect>
-       <x>68</x>
+       <x>78</x>
        <y>35</y>
-       <width>561</width>
-       <height>21</height>
+       <width>541</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
@@ -194,8 +224,11 @@ font-weight: 600;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels de valor (...Set) */
+QLabel {
+  color: #e6e6e9;
+  font-weight: 600;
+}</string>
      </property>
      <property name="text">
       <string>--</string>
@@ -210,10 +243,10 @@ font-weight: 600;</string>
     <widget class="QLabel" name="labelAlbumSet">
      <property name="geometry">
       <rect>
-       <x>69</x>
+       <x>78</x>
        <y>60</y>
-       <width>551</width>
-       <height>21</height>
+       <width>541</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
@@ -225,8 +258,11 @@ font-weight: 600;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels de valor (...Set) */
+QLabel {
+  color: #e6e6e9;
+  font-weight: 600;
+}</string>
      </property>
      <property name="text">
       <string>--</string>
@@ -241,10 +277,10 @@ font-weight: 600;</string>
     <widget class="QLabel" name="labelDuracionSet">
      <property name="geometry">
       <rect>
-       <x>88</x>
+       <x>100</x>
        <y>85</y>
-       <width>121</width>
-       <height>20</height>
+       <width>91</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="font">
@@ -256,11 +292,14 @@ font-weight: 600;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: #CCCCCC;
-font-weight: 600;</string>
+      <string notr="true">/* Labels de valor (...Set) */
+QLabel {
+  color: #e6e6e9;
+  font-weight: 600;
+}</string>
      </property>
      <property name="text">
-      <string>[00:00.00]</string>
+      <string>[00:00.000]</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
@@ -277,6 +316,31 @@ font-weight: 600;</string>
        <width>16</width>
        <height>91</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">/* verticalSliderVolumen */
+QSlider::groove:vertical {
+  background: #2a2f3a;
+  width: 4px;
+  border-radius: 2px;
+  margin: 6px 10px;
+}
+QSlider::sub-page:vertical {
+  background: #4cc9f0;
+  border-radius: 2px;
+}
+QSlider::add-page:vertical {
+  background: #2a2f3a;
+  border-radius: 2px;
+}
+QSlider::handle:vertical {
+  background: #4cc9f0;
+  border: 2px solid #0b1117;
+  width: 14px; height: 14px;
+  margin: -6px -6px;
+  border-radius: 7px;
+}
+QSlider::handle:vertical:hover { background: #65d2f3; }</string>
      </property>
      <property name="value">
       <number>30</number>
@@ -305,8 +369,12 @@ font-weight: 600;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #222;
-border-radius: 10px;</string>
+     <string notr="true">/* frameBiblioteca */
+QFrame {
+  background: #1d2026;
+  border: 1px solid #2b2f39;
+  border-radius: 10px;
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -334,8 +402,12 @@ border-radius: 10px;</string>
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #222;
-border-radius: 10px;</string>
+     <string notr="true">/* frameBiblioteca */
+QFrame {
+  background: #1d2026;
+  border: 1px solid #2b2f39;
+  border-radius: 10px;
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -346,10 +418,10 @@ border-radius: 10px;</string>
     <widget class="QLabel" name="labelBiblioteca">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>80</x>
        <y>20</y>
-       <width>89</width>
-       <height>19</height>
+       <width>101</width>
+       <height>23</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -385,22 +457,17 @@ font-weight: bold;</string>
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+      <string notr="true">/* pushButtonAgregarBiblioteca */
+QPushButton {
+  background: #262b35;
+  border: 1px solid #3a3f4a;
+  color: #e6e6e9;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #323746; }
+QPushButton:pressed { background: #262b35; }
+QPushButton:disabled { color: #7d8391; background: #22262f; border-color: #2e3340; }</string>
      </property>
      <property name="text">
       <string>Agregar Biblioteca</string>
@@ -434,27 +501,35 @@ QPushButton:pressed {
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">QListView {
-    color: #FFF;
-    font: 10pt &quot;Segoe UI&quot;;
-    background-color: #333;
-    border: 1px solid #444;
-    border-radius: 10px;
+      <string notr="true">/* listViewBiblioteca */
+QListView {
+  background: #1a1d23;
+  border: 1px solid #2b2f39;
+  border-radius: 10px;
+  color: #e6e6e9;
 }
-
 QListView::item {
-    padding: 5px;
-    border-bottom: 1px solid #444;
+  padding: 8px 10px;
+  border-radius: 6px;
+  color: #dfe3ea;
 }
-
 QListView::item:hover {
-    background-color: #444;
+  background: rgba(76, 201, 240, 0.08);
 }
-
 QListView::item:selected {
-    background-color: #555;
-    color: #FFF;
-}</string>
+  background: rgba(76, 201, 240, 0.22);
+  color: #ffffff;
+}
+/* Scrollbar local */
+QScrollBar:vertical {
+  background: transparent; width: 10px; margin: 4px 2px;
+}
+QScrollBar::handle:vertical {
+  background: #3a3f4a; min-height: 30px; border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover { background: #474c58; }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; border: 0; background: transparent; }
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: transparent; }</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
@@ -480,8 +555,12 @@ QListView::item:selected {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #222;
-border-radius: 10px;</string>
+     <string notr="true">/* frameLyrics */
+QFrame {
+  background: #1d2026;
+  border: 1px solid #2b2f39;
+  border-radius: 10px;
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>
@@ -502,9 +581,11 @@ border-radius: 10px;</string>
       <number>0</number>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(66, 66, 66);
-
-border-radius: 10px;</string>
+      <string notr="true">/* frameLyricsSettings */
+QFrame {
+  background: transparent; /* si es contenedor interno de la barra */
+  border: 0;
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
@@ -525,22 +606,16 @@ border-radius: 10px;</string>
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+       <string notr="true">/* pushButtonImportar */
+QPushButton {
+  background: #262b35;
+  border: 1px solid #3a3f4a;
+  color: #e6e6e9;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #323746; }
+QPushButton:pressed { background: #262b35; }</string>
       </property>
       <property name="text">
        <string>Importar</string>
@@ -577,22 +652,16 @@ QPushButton:pressed {
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+       <string notr="true">/* pushButtonGuardar */
+QPushButton {
+  background: #262b35;
+  border: 1px solid #3a3f4a;
+  color: #e6e6e9;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #323746; }
+QPushButton:pressed { background: #262b35; }</string>
       </property>
       <property name="text">
        <string>Guardar</string>
@@ -619,7 +688,7 @@ QPushButton:pressed {
      <widget class="QLabel" name="labelTimeSongNow">
       <property name="geometry">
        <rect>
-        <x>531</x>
+        <x>540</x>
         <y>15</y>
         <width>111</width>
         <height>20</height>
@@ -627,19 +696,23 @@ QPushButton:pressed {
       </property>
       <property name="font">
        <font>
-        <family>Segoe UI</family>
-        <pointsize>14</pointsize>
+        <family>JetBrains Mono</family>
+        <pointsize>-1</pointsize>
         <italic>false</italic>
         <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: #CCCCCC;
-font-weight: 600;
-font-weight: bold;</string>
+       <string notr="true">/* labelTimeSongNow */
+QLabel {
+  font-family: &quot;JetBrains Mono&quot;,&quot;Consolas&quot;,monospace;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+  color: #e6e6e9;
+}</string>
       </property>
       <property name="text">
-       <string>[00:00.00]</string>
+       <string>[00:00.000]</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignVCenter</set>
@@ -651,7 +724,7 @@ font-weight: bold;</string>
      <widget class="QLabel" name="labelTime">
       <property name="geometry">
        <rect>
-        <x>477</x>
+        <x>490</x>
         <y>15</y>
         <width>51</width>
         <height>20</height>
@@ -662,13 +735,15 @@ font-weight: bold;</string>
         <family>Segoe UI</family>
         <pointsize>12</pointsize>
         <italic>false</italic>
-        <bold>true</bold>
+        <fontweight>DemiBold</fontweight>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">color: #CCCCCC;
-font-weight: 600;
-font-weight: bold;</string>
+       <string notr="true">/* labelTime */
+QLabel {
+  color: #b6bcc8;
+  font-weight: 600;
+}</string>
       </property>
       <property name="text">
        <string>Time : </string>
@@ -693,22 +768,18 @@ font-weight: bold;</string>
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+       <string notr="true">/* pushButtonPlay */
+QPushButton {
+  background: #4cc9f0;
+  border: 0;
+  color: #0b1117;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #65d2f3; }
+QPushButton:pressed { background: #3fb6db; }
+QPushButton:disabled { background: #2d5f6f; color: #0b1117; }</string>
       </property>
       <property name="text">
        <string>Play</string>
@@ -745,22 +816,18 @@ QPushButton:pressed {
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+       <string notr="true">/* pushButtonStop */
+QPushButton {
+  background: #e5484d;
+  border: 0;
+  color: #0b1117;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #f2555a; }
+QPushButton:pressed { background: #cc3f44; }
+QPushButton:disabled { background: #7c2e30; color: #0b1117; }</string>
       </property>
       <property name="text">
        <string>Stop</string>
@@ -784,9 +851,9 @@ QPushButton:pressed {
      <widget class="QPushButton" name="pushButtonAsignarRowTime">
       <property name="geometry">
        <rect>
-        <x>392</x>
+        <x>390</x>
         <y>10</y>
-        <width>59</width>
+        <width>71</width>
         <height>29</height>
        </rect>
       </property>
@@ -794,22 +861,18 @@ QPushButton:pressed {
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+       <string notr="true">/* pushButtonAsignarRowTime */
+QPushButton {
+  background: #4cc9f0;
+  border: 0;
+  color: #0b1117;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #65d2f3; }
+QPushButton:pressed { background: #3fb6db; }
+QPushButton:disabled { background: #2d5f6f; color: #0b1117; }</string>
       </property>
       <property name="text">
        <string>Asignar</string>
@@ -836,9 +899,9 @@ QPushButton:pressed {
      <widget class="QPushButton" name="pushButtonBackSync">
       <property name="geometry">
        <rect>
-        <x>354</x>
+        <x>340</x>
         <y>10</y>
-        <width>31</width>
+        <width>41</width>
         <height>31</height>
        </rect>
       </property>
@@ -846,22 +909,16 @@ QPushButton:pressed {
        <bool>false</bool>
       </property>
       <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #333;
-    color: #FFF;
-    font: bold 10pt &quot;Segoe UI&quot;;
-    border: 1px solid #555;
-    border-radius: 5px;
-    padding: 5px;
+       <string notr="true">/* pushButtonBackSync */
+QPushButton {
+  background: #262b35;
+  border: 1px solid #3a3f4a;
+  color: #e6e6e9;
+  padding: 6px 12px;
+  border-radius: 8px;
 }
-QPushButton:hover {
-    background-color: #444;
-    border: 1px solid #888;
-}
-QPushButton:pressed {
-    background-color: #222;
-    border: 1px solid #222;
-}</string>
+QPushButton:hover { background: #323746; }
+QPushButton:pressed { background: #262b35; }</string>
       </property>
       <property name="text">
        <string>⬅️</string>
@@ -899,9 +956,12 @@ QPushButton:pressed {
       <number>0</number>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(66, 66, 66);
-
-border-radius: 10px;</string>
+      <string notr="true">/* frameLyricsPlayerBar */
+QFrame {
+  background: #2a2f3a;
+  border: 1px solid #353a45;
+  border-radius: 10px;
+}</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::Shape::StyledPanel</enum>
@@ -919,22 +979,29 @@ border-radius: 10px;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">QSlider::groove:vertical {
-    background: #333;
-    border-radius: 5px;
-    width: 8px;
-}
-QSlider::handle:vertical {
-    background: #888;
-    border: 1px solid #555;
-    height: 20px;
-    margin: 0 -4px; /* para centrar el handle */
-    border-radius: 6px;
+       <string notr="true">/* verticalSliderPlayerBar */
+QSlider::groove:vertical {
+  background: #2a2f3a;
+  width: 4px;
+  border-radius: 2px;
+  margin: 6px 10px; /* deja espacio para el handle */
 }
 QSlider::sub-page:vertical {
-    background: #444;
-    border-radius: 5px;
-}</string>
+  background: #4cc9f0;
+  border-radius: 2px;
+}
+QSlider::add-page:vertical {
+  background: #2a2f3a;
+  border-radius: 2px;
+}
+QSlider::handle:vertical {
+  background: #4cc9f0;
+  border: 2px solid #0b1117;
+  width: 14px; height: 14px;
+  margin: -6px -6px; /* centra el handle */
+  border-radius: 7px;
+}
+QSlider::handle:vertical:hover { background: #65d2f3; }</string>
       </property>
       <property name="maximum">
        <number>0</number>
@@ -971,6 +1038,24 @@ QSlider::sub-page:vertical {
        <height>588</height>
       </rect>
      </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>611</width>
+       <height>588</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>611</width>
+       <height>588</height>
+      </size>
+     </property>
      <property name="font">
       <font>
        <family>Segoe UI</family>
@@ -980,42 +1065,47 @@ QSlider::sub-page:vertical {
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">QTableWidget {
-    color: #FFF;
-    font: 10pt &quot;Segoe UI&quot;;
-    background-color: #222;
-    border: 1px solid #444;
-    border-radius: 8px;
-    gridline-color: #333;
+      <string notr="true">/* tableWidgetLyrics */
+QTableWidget {
+  background: #1a1d23;
+  border: 1px solid #2b2f39;
+  border-radius: 10px;
+  gridline-color: #2b2f39;
+  selection-background-color: rgba(76, 201, 240, 0.22);
+  selection-color: #ffffff;
+  alternate-background-color: #171a20;
+  color: #e6e6e9;
 }
-
 QTableWidget::item {
-    padding: 8px;
-    border-bottom: 1px solid #333;
+  padding: 6px 10px;
 }
-
 QTableWidget::item:hover {
-    background-color: #333;
+  background: rgba(76, 201, 240, 0.08);
 }
-
-QTableWidget::item:selected {
-    background-color: #555;
-    color: #FFF;
-}
-
+/* Cabeceras del mismo widget */
 QHeaderView::section {
-    background-color: #111;
-    border: none;
-    font-weight: bold;
-    padding: 6px;
-    text-align: center;
-    border-bottom: 2px solid #333;
+  background: #23262d;
+  color: #b6bcc8;
+  border: 0;
+  border-bottom: 1px solid #2b2f39;
+  padding: 6px 8px;
+  font-weight: 600;
 }
-
 QTableCornerButton::section {
-    background-color: #111;
-    border: none;
-}</string>
+  background: #23262d;
+  border: 0;
+  border-bottom: 1px solid #2b2f39;
+}
+/* Scrollbar local */
+QScrollBar:vertical {
+  background: transparent; width: 10px; margin: 4px 2px;
+}
+QScrollBar::handle:vertical {
+  background: #3a3f4a; min-height: 30px; border-radius: 4px;
+}
+QScrollBar::handle:vertical:hover { background: #474c58; }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; border: 0; background: transparent; }
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical { background: transparent; }</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
