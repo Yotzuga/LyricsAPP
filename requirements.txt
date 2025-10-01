@@ -1,2 +1,4 @@
 PyQt6>=6.0
 python-vlc>=3.0
+mutagen>=1.45
+pyinstaller>=6.0
