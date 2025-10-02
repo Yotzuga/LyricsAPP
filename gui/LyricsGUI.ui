@@ -697,7 +697,7 @@ QPushButton:pressed { background: #262b35; }</string>
       <property name="font">
        <font>
         <family>JetBrains Mono</family>
-        <pointsize>-1</pointsize>
+        <pointsize>9</pointsize>
         <italic>false</italic>
         <bold>true</bold>
        </font>

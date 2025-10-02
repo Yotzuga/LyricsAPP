@@ -1,76 +1,46 @@
-# Lyrics Sync (PyQt6)
+# Project2 - LyricsAPP
 
-Aplicación de escritorio para sincronizar letras con audio.
+Este proyecto es una aplicación PyQt6 para gestionar y sincronizar letras de canciones, con reproducción basada en VLC y extracción/edición de metadatos con mutagen.
 
-Características principales
-- Cargar canciones y mostrar letra en tabla con timestamps.
-- Reproducir audio con libVLC (python-vlc).
-- Asignar el tiempo actual del reproductor a marcadores vacíos (AsignarRowTime).
-- Eliminar el último marcador asignado (BackSync).
-- Doble clic en línea para hacer seek sin detener la reproducción.
+## Requisitos
+- Python 3.12 o 3.13 (recomendado)
+- Windows 10/11
 
-Estructura
-- `main.py` - punto de entrada y wiring de controladores.
-- `controllers/` - controladores UI y servicios.
-- `player/` - wrapper VLC y clase `Song`.
-- `threads/` - hilo de actualización de tiempo.
+## Crear y activar un entorno virtual (Windows PowerShell)
 
-Requisitos
-- Python 3.8+
-- PyQt6
-- python-vlc
-
-Dependencias recomendadas
-- mutagen (lectura de metadata de audio)
-- pyinstaller (si quieres generar un ejecutable .exe)
-
-Versión de Python recomendada
-- Esta aplicación se ha probado con Python 3.10, 3.11, 3.12 y 3.13.
-- Recomendamos usar Python 3.10–3.13 para evitar incompatibilidades con PyInstaller/PyQt6 y python-vlc.
-
-Comprobar versión de Python (PowerShell / terminal):
+1. Crear el entorno virtual en la carpeta del proyecto:
 ```powershell
-python --version
-```
-python -c "import sys; print(sys.version)"
+py -3 -m venv .venv
 ```
 
-Instalación rápida (Windows PowerShell)
-
+2. Activar el entorno virtual:
 ```powershell
-# Sitúate en la carpeta del proyecto (ajusta la ruta a la ubicación en tu equipo)
-Set-Location '<ruta-a-tu-proyecto>\Project2'
-
-python -m venv .venv
-# Si PowerShell bloquea la activación por políticas, ejecutar sólo para la sesión actual:
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 .\.venv\Scripts\Activate.ps1
-pip install --upgrade pip
-pip install -r requirements.txt
-python main.py
 ```
 
-Cómo crear un ejecutable con PyInstaller (recomendado empezar con `--onedir`)
-
+3. Actualizar pip (opcional pero recomendado):
 ```powershell
-pyinstaller --noconfirm --clean --onedir --windowed --name LyricsAPP --add-data "gui\LyricsGUI.ui;gui" main.py
-
-pyinstaller --noconfirm --clean --onedir --console --name LyricsAPP --add-data "gui\LyricsGUI.ui;gui" main.py
+python -m pip install --upgrade pip
 ```
 
-Notas y solución de problemas
+4. Instalar dependencias:
+```powershell
+pip install -r requirements.txt
+```
 
-- Arquitectura: asegúrate de usar Python de la misma arquitectura (32/64-bit) que tu instalación de VLC — python-vlc requiere que libvlc sea compatible con Python.
-- Si el exe falla por falta de `LyricsGUI.ui`, añade `--add-data "gui\LyricsGUI.ui;gui"` (como en el ejemplo) o incluye el archivo en el `.spec`.
-- Si hay problemas de reproducción o faltan codecs/libvlc, copia la carpeta `plugins` de tu instalación de VLC (ej.: `C:\Program Files\VideoLAN\VLC\plugins`) dentro de `dist\LyricsAPP` junto al exe, o incluye esa carpeta directamente en el `.spec` con `Tree()`.
+## Ejecutar la aplicación
 
-Empaquetado para distribución
-- La forma más sencilla de distribuir es crear un ZIP de `dist\LyricsAPP` y compartirlo. Para crear un instalador puedes usar Inno Setup o NSIS.
+Desde el directorio `Project2` (con el entorno activado):
+```powershell
+python .\main.py
+```
 
-Contacto / Desarrollo
-- Si quieres, puedo ayudarte a: añadir logging a `main.py`, ajustar el `.spec` para incluir libvlc/plugins automáticamente, o generar un script de Inno Setup.
+## Notas sobre VLC
+- El paquete `python-vlc` es un binding. Necesitas el reproductor VLC instalado para tener la librería nativa.
+- Descarga VLC para Windows desde: https://www.videolan.org/vlc/
+- Instala la versión de 64 bits si tu Python es de 64 bits. Asegúrate de que VLC quede en el PATH o en su ruta por defecto (por ejemplo, `C:\Program Files\VideoLAN\VLC`).
 
----
-
-Archivo `requirements.txt` recomendado contiene las dependencias principales y opcionales para build.
-
+## Problemas comunes
+- "ModuleNotFoundError: No module named 'PyQt6'" -> Activa el entorno virtual y ejecuta `pip install -r requirements.txt`.
+- "NameError: name 'vlc' is not defined" o fallos al reproducir -> Asegúrate de tener VLC instalado en el sistema.
+- Errores de mutagen al escribir tags -> Comprueba que el archivo no esté protegido y que el formato sea el soportado (MP3/FLAC/M4A).
