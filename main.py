@@ -7,10 +7,16 @@ from controllers.ImportContoller import ImportContoller
 from controllers.PlayerController import PlayerController
 from controllers.TimesController import TimesController
 
+def resource_path(*paths: str) -> str:
+    """Devuelve la ruta de un recurso compatible con PyInstaller (onefile) y modo normal."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(__file__))  # type: ignore[attr-defined]
+    return os.path.join(base, *paths)
+
+
 class MyWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyWindow, self).__init__()
-        ui_file = os.path.join(os.path.dirname(__file__), "gui", "LyricsGUI.ui")
+        ui_file = resource_path("gui", "LyricsGUI.ui")
         self.ui = uic.loadUi(ui_file, self)  # type: ignore
 
        # Fija los anchos que quieres

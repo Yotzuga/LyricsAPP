@@ -1,15 +1,27 @@
 # Entorno virtual
 .venv/
 
+# Artefactos de build/instalador
+/build/
+/dist/
+/Output/
+/LyricsAPP.spec
+
 # Cachés de Python
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
+.pytest_cache/
 
-# Archivos temporales
+# Archivos temporales/logs
 *.log
 *.tmp
+logs/
 
-# VS Code
+# IDE/Editor
 .vscode/
+.idea/
+
+# SO
+.DS_Store

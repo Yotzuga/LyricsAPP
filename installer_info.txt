@@ -1,0 +1,17 @@
+LyricsAPP - Requisitos previos
+
+1) VLC (64 bits) es requerido para la reproducción.
+   - Descarga: https://www.videolan.org/vlc/
+   - Instálalo preferiblemente en: C:\Program Files\VideoLAN\VLC
+
+2) Este instalador no incluye VLC. Si no está presente, la app puede no reproducir audio.
+
+3) Formatos soportados para letras incrustadas:
+   - MP3 (ID3 USLT/SYLT), FLAC (campo LYRICS u otros afines), M4A (©lyr u otros afines).
+
+4) Recomendaciones:
+   - Usa VLC de 64 bits si tu sistema es de 64 bits (lo habitual).
+   - Cierra otras apps que usen los archivos de audio antes de guardar letras.
+
+Si tienes problemas, consulta el README del repositorio o abre un issue:
+https://github.com/Yotzuga/LyricsAPP

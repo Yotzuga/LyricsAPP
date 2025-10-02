@@ -1,10 +1,35 @@
+import os
 import threading
 import time
 
+# Intento robusto de cargar python-vlc en Windows añadiendo rutas de VLC
+_vlc_import_error = None
+_vlc_plugin_path = None
 try:
-    import vlc
-except Exception:
-    vlc = None
+    if os.name == "nt":
+        # Permitir que el usuario fuerce la ruta con VLC_PATH
+        candidate_paths = [
+            os.environ.get("VLC_PATH"),
+            r"C:\\Program Files\\VideoLAN\\VLC",
+            r"C:\\Program Files (x86)\\VideoLAN\\VLC",
+        ]
+        for p in candidate_paths:
+            if p and os.path.isdir(p):
+                try:
+                    # Python 3.8+ en Windows requiere registrar rutas de DLL
+                    os.add_dll_directory(p)  # type: ignore[attr-defined]
+                except Exception:
+                    pass
+                # Sugerir ruta de plugins a libvlc
+                _vlc_plugin_path = os.path.join(p, "plugins")
+                # Exportar para que libvlc la vea si hace falta
+                if os.path.isdir(_vlc_plugin_path):
+                    os.environ.setdefault("VLC_PLUGIN_PATH", _vlc_plugin_path)
+                break
+    import vlc  # type: ignore
+except Exception as e:
+    vlc = None  # type: ignore
+    _vlc_import_error = str(e)
 
 
 class VLCPlayer:
@@ -12,16 +37,33 @@ class VLCPlayer:
     Métodos: play(file_path), stop(), set_volume(int), get_time(), get_length(), set_position(ms)
     """
     def __init__(self):
-        self.instance = vlc.Instance() if vlc else None
+        # Construir la instancia con posibles flags útiles
+        if vlc:
+            args = ["--no-video", "--quiet"]
+            try:
+                self.instance = vlc.Instance(*args)  # type: ignore
+            except Exception:
+                # último intento sin argumentos
+                try:
+                    self.instance = vlc.Instance()  # type: ignore
+                except Exception:
+                    self.instance = None
+        else:
+            self.instance = None
         self.player = self.instance.media_player_new() if self.instance else None
         self._media = None
         self._lock = threading.RLock()
 
     def play(self, file_path: str) -> bool:
-        if not vlc:
-            raise RuntimeError("python-vlc no está disponible")
+        if not vlc or not self.instance or not self.player:
+            # Mensaje de diagnóstico útil
+            msg = "python-vlc no está disponible"
+            if _vlc_import_error:
+                msg += f" ({_vlc_import_error})"
+            raise RuntimeError(msg)
         with self._lock:
             try:
+                # Asegura cadena de ruta simple (no URI) para Windows
                 self._media = self.instance.media_new(str(file_path)) # type: ignore
                 self.player.set_media(self._media) # type: ignore
                 self.player.play() # type: ignore

@@ -1,46 +1,103 @@
-# Project2 - LyricsAPP
+# LyricsAPP
 
-Este proyecto es una aplicación PyQt6 para gestionar y sincronizar letras de canciones, con reproducción basada en VLC y extracción/edición de metadatos con mutagen.
+Aplicación de escritorio para Windows que permite reproducir música, visualizar y sincronizar letras, y escribirlas en los metadatos del archivo. Está construida con PyQt6, reproduce con VLC (vía python-vlc) y usa Mutagen para leer/escribir metadatos en MP3/FLAC/M4A.
 
-## Requisitos
-- Python 3.12 o 3.13 (recomendado)
-- Windows 10/11
+## Características
+- Reproducción de audio mediante VLC (estable y compatible con múltiples formatos).
+- Extracción de metadatos con Mutagen: título, artista, álbum, duración, letras (USLT/SYLT, FLAC tags, MP4).
+- Visualización y edición de letras; sincronización por marcas de tiempo.
+- Guardado de letras en los propios archivos (MP3/FLAC/M4A) sin herramientas externas.
+- Interfaz moderna con PyQt6.
 
-## Crear y activar un entorno virtual (Windows PowerShell)
+## Requisitos (usuarios finales)
+- Windows 10/11 (64 bits)
+- VLC 64 bits instalado en el sistema
+	- Descarga: https://www.videolan.org/vlc/
+	- Instálalo en la ruta por defecto (p. ej. `C:\\Program Files\\VideoLAN\\VLC`).
 
-1. Crear el entorno virtual en la carpeta del proyecto:
+Nota: El instalador de LyricsAPP no incluye VLC. Es un requisito externo ligero y estándar.
+
+## Instalación (usuarios finales)
+1) Instalar VLC (64 bits).
+2) Ejecutar el instalador de LyricsAPP (`LyricsAPP-Setup.exe`).
+3) Abrir LyricsAPP desde el acceso directo del menú Inicio o el escritorio.
+
+## Uso básico
+- Importa o abre tu biblioteca de música.
+- Carga un archivo (MP3/FLAC/M4A), reproduce y edita/sincroniza las letras.
+- Guarda para escribir las letras dentro del propio archivo de audio.
+
+## Hotkeys
+- Espacio: Play/Pausa
+- Ctrl + S: Guardar letras
+- Ctrl + B: Abrir biblioteca
+- N: Eliminar marca de tiempo seleccionada
+- M: Asignar marca de tiempo actual
+
+## Desarrollo (desde código fuente)
+Requisitos: Python 3.12 o 3.13 y VLC instalado.
+
+1) Crear y activar un entorno virtual (PowerShell):
 ```powershell
 py -3 -m venv .venv
-```
-
-2. Activar el entorno virtual:
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-3. Actualizar pip (opcional pero recomendado):
-```powershell
+.\\.venv\\Scripts\\Activate.ps1
 python -m pip install --upgrade pip
-```
-
-4. Instalar dependencias:
-```powershell
 pip install -r requirements.txt
 ```
 
-## Ejecutar la aplicación
-
-Desde el directorio `Project2` (con el entorno activado):
+2) Ejecutar la app:
 ```powershell
-python .\main.py
+python .\\main.py
 ```
 
-## Notas sobre VLC
-- El paquete `python-vlc` es un binding. Necesitas el reproductor VLC instalado para tener la librería nativa.
-- Descarga VLC para Windows desde: https://www.videolan.org/vlc/
-- Instala la versión de 64 bits si tu Python es de 64 bits. Asegúrate de que VLC quede en el PATH o en su ruta por defecto (por ejemplo, `C:\Program Files\VideoLAN\VLC`).
+Si VLC no está en la ruta por defecto, puedes exportar temporalmente las variables (opcional):
+```powershell
+$env:VLC_PATH = "C:\\Program Files\\VideoLAN\\VLC"
+$env:VLC_PLUGIN_PATH = "$env:VLC_PATH\\plugins"
+python .\\main.py
+```
 
-## Problemas comunes
-- "ModuleNotFoundError: No module named 'PyQt6'" -> Activa el entorno virtual y ejecuta `pip install -r requirements.txt`.
-- "NameError: name 'vlc' is not defined" o fallos al reproducir -> Asegúrate de tener VLC instalado en el sistema.
-- Errores de mutagen al escribir tags -> Comprueba que el archivo no esté protegido y que el formato sea el soportado (MP3/FLAC/M4A).
+## Construir ejecutable (.exe)
+Opción sencilla (onefile):
+```powershell
+pyinstaller --name LyricsAPP --noconsole --onefile --add-data 'gui\\LyricsGUI.ui;gui' main.py
+```
+El binario quedará en `dist/LyricsAPP.exe`.
+
+También dispones de un script de ayuda:
+```powershell
+./build.ps1 -OneFile
+```
+
+## Crear instalador (Inno Setup)
+1) Genera previamente el ejecutable (ver sección anterior).
+2) Abre y compila `installer.iss` con Inno Setup Compiler.
+3) Obtendrás `Output/LyricsAPP-Setup.exe`.
+
+Este instalador muestra un aviso previo indicando el requisito de VLC.
+
+## Estructura del proyecto
+- `main.py`: arranque de la app y carga de `gui/LyricsGUI.ui`.
+- `controllers/`: lógica de UI (biblioteca, letras, player, tiempos, importación).
+- `metadata/`: extractores/editores de metadatos para MP3, FLAC y M4A (Mutagen).
+- `player/`: wrapper de VLC (python-vlc) y entidad `Song`.
+- `gui/`: recursos de UI (archivo .ui de Qt Designer).
+- `threads/`: hilos auxiliar(es) para actualizar tiempo de reproducción.
+- `utils/`: utilidades varias (biblioteca, etc.).
+
+## Solución de problemas
+- VLC no encontrado / reproducción falla:
+	- Asegúrate de tener VLC 64 bits instalado en `C:\\Program Files\\VideoLAN\\VLC`.
+	- Si usas consola: exporta temporalmente `VLC_PATH` y `VLC_PLUGIN_PATH` como en el ejemplo de arriba.
+	- Desajuste de arquitectura: Python/EXE x64 requieren VLC x64.
+- Error al activar venv (ExecutionPolicy):
+	- Ejecuta solo para esa sesión: `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass` y vuelve a activar.
+- Mutagen no puede escribir:
+	- Verifica permisos del archivo, que no esté en uso y que el formato sea MP3/FLAC/M4A.
+
+## Créditos y licencias
+- VLC es un producto de VideoLAN (https://www.videolan.org/). Este proyecto usa `python-vlc` como binding.
+- Mutagen: https://mutagen.readthedocs.io/
+- PyQt6: https://pypi.org/project/PyQt6/
+
+© 2025. Todos los derechos reservados.
