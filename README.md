@@ -15,13 +15,6 @@ Aplicación de escritorio para Windows que permite reproducir música, visualiza
 	- Descarga: https://www.videolan.org/vlc/
 	- Instálalo en la ruta por defecto (p. ej. `C:\\Program Files\\VideoLAN\\VLC`).
 
-Nota: El instalador de LyricsAPP no incluye VLC. Es un requisito externo ligero y estándar.
-
-## Instalación (usuarios finales)
-1) Instalar VLC (64 bits).
-2) Ejecutar el instalador de LyricsAPP (`LyricsAPP-Setup.exe`).
-3) Abrir LyricsAPP desde el acceso directo del menú Inicio o el escritorio.
-
 ## Uso básico
 - Importa o abre tu biblioteca de música.
 - Carga un archivo (MP3/FLAC/M4A), reproduce y edita/sincroniza las letras.
